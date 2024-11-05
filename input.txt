@@ -1,0 +1,5 @@
+1001010
+ola mundo
+2
+15
+teste
