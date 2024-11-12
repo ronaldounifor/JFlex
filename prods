@@ -1,6 +1,6 @@
-Block       = "{"{Statement} "}"
+Block       = "{" {Statement} "}"
 Statement   = Designator ("=" Expr | ActPars) ";"
-              "if" "("Condition ")" Statement ["else" Statement]
+              | "if" "("Condition ")" Statement ["else" Statement]
               | "while" "(" Condition ")" Statement
               | "return" [Expr] ";"
               | "read" "(" Designator ")" ";"
@@ -10,14 +10,14 @@ Statement   = Designator ("=" Expr | ActPars) ";"
 ActPars     = "(" [ Expr {"," Expr} ] ")"
 Condition   = Expr Relop Expr
 Relop       = "==" | "!=" | ">" | ">=" | "<" | "<="
-Expr        = ["-"] Term {Addo Term}
+Expr        = ["-"] Term {Addop Term}
 Term        = Factor {Mulop Factor}
 Factor      = Designator [ActPars]
               | number
               | charConst
               | "new" ident ["[" Expr "]"]
               | "(" Expr ")"
-Designator   = ident ("." ident❘ "[" Expr "]"}
+Designator   = ident {"." ident ❘ "[" Expr "]"}
 Addop        = "+" | "-"
 Mulop        = "*" | "/" | "%"
 
