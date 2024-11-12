@@ -1,0 +1,26 @@
+Block = "{"{Statement} "}"
+Statement = Designator ("=" Expr | ActPars) ";"
+"if" "("Condition ")" Statement ["else" Statement]
+| "while" "(" Condition ")" Statement
+| "return" [Expr] ";"
+| "read" "(" Designator ")" ";"
+| "print" "(" Expr ["," number] ")" ";"
+| Block
+| ";"
+ActPars = "(" [ Expr {"," Expr} ] ")"
+Condition = Expr Relop Expr
+Relop = "==" | "!=" | ">" | ">=" | "<" | "<="
+Expr = ["-"] Term {Addo Term}
+Term = Factor {Mulop Factor}
+Factor = Designator [ActPars]
+| number
+| charConst
+"new" ident ["[" Expr "]"]
+| "(" Expr ")"
+Designator = ident ("." ident❘ "[" Expr "]"}
+Addop = "+" | "-"
+Mulop = "*" | "/" | "%"
+
+{} * Zero ou muitas vezes
+() + Uma ou muitas vezes
+[ ] ? Zero ou uma vez
